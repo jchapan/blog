@@ -1,7 +1,15 @@
 const express = require('express');
-const app = express()
-const { config } = require('../config')
-const mongoose = require('mongoose')
+const app = express();
+const cors = require('cors');
+const { config } = require('../config');
+const mongoose = require('mongoose');
+
+// SET HERE YOUR CORS POLICY
+// IT'S SET TO PUBLIC
+app.use(cors())
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ extended: true }));
 
 mongoose.connect(
     config.db.url,
