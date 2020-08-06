@@ -17,7 +17,9 @@ mongoose.connect(
 )
 .then(()=> console.log('Connected to DB'))
 .catch((err)=> console.log('Error on connection', err))
-
+app.get('/', (req, res)=>{
+    res.json({message: 'App running'})
+})
 app.use('/api/v1', require('../routes'))
 
 module.exports = { app }
