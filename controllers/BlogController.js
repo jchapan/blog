@@ -22,5 +22,11 @@ module.exports = {
         Blog.findByIdAndDelete(req.params.id)
             .then((resDB)=> res.status(204).json(resDB))
             .catch((err)=> res.status(400).json(err))
+    },
+    edit: (req, res)=>{
+        const { body } = req
+        Blog.findOneAndUpdate(req.params.id, body, { new: true})
+        .then((resDB)=> res.status(201).json(resDB))
+        .catch((err)=> res.status(400).json(err))
     }
 }
